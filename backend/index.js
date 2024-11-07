@@ -11,13 +11,12 @@ const app = express();
 // using middleware
 app.use(express.json());
 const corsOptions = {
-  origin:process.env.URL,
+  origin:'https://chatbot-1-g91n.onrender.com',
   credentials:true
 }
 app.use(cors(corsOptions));
 
 const __dirname = path.resolve();
-console.log(__dirname);
 
 //importing routes
 import userRoutes from "./routes/userRoutes.js";
