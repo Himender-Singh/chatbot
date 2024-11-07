@@ -10,29 +10,32 @@ const app = express();
 
 // using middleware
 app.use(express.json());
+
+// CORS configuration to allow both domains
 const corsOptions = {
-  origin:'https://chatbot-1-g91n.onrender.com',
-  credentials:true
-}
+  origin: ['https://chatbot-1-g91n.onrender.com', 'https://chatbot-cu5a.onrender.com'], // Add the allowed origins
+  credentials: true
+};
 app.use(cors(corsOptions));
 
 const __dirname = path.resolve();
 
-//importing routes
+// importing routes
 import userRoutes from "./routes/userRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
 
-//using routes
+// using routes
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 
-app.use(express.static(path.join(__dirname,"/frontend/dist")));
-app.get("*",(req,res) => {
-  res.sendFile(path.resolve(__dirname,"frontend","dist","index.html"));
-})
+// Serve frontend assets
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+});
 
-
+// Start the server and connect to the database
 app.listen(process.env.PORT, () => {
-  console.log(`server is working on port ${process.env.PORT}`);
+  console.log(`Server is working on port ${process.env.PORT}`);
   connectDb();
 });
