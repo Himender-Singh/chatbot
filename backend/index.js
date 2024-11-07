@@ -10,7 +10,11 @@ const app = express();
 
 // using middleware
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin:process.env.URL,
+  credentials:true
+}
+app.use(cors(corsOptions));
 
 const __dirname = path.resolve();
 console.log(__dirname);
