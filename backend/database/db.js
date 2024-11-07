@@ -5,7 +5,7 @@ const connectDb = async () => {
     // Set strictQuery to false to match the upcoming Mongoose 7 default and suppress the warning
     mongoose.set('strictQuery', false);
 
-    await mongoose.connect(process.env.Db_url, {
+    await mongoose.connect(process.env.DB_url, {
       dbName: "chatbot_career",
       useNewUrlParser: true,
       useUnifiedTopology: true,
