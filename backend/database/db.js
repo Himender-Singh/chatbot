@@ -2,13 +2,19 @@ import mongoose from "mongoose";
 
 const connectDb = async () => {
   try {
-    // mongoose.set('strictQuery', false); 
+    // Set strictQuery to false to match the upcoming Mongoose 7 default and suppress the warning
+    mongoose.set('strictQuery', false);
+
     await mongoose.connect(process.env.Db_url, {
-      dbName: "chatbot_career", // Ensure the database name is valid
+      dbName: "chatbot_career",
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
-    console.log("MongoDB connected");
+
+    console.log("MongoDB connected successfully.");
   } catch (error) {
-    process.exit(1); // Exit the process with failure code
+    console.error("MongoDB connection error:", error.message);
+    process.exit(1);
   }
 };
 
