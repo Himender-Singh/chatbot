@@ -13,7 +13,7 @@ const app = express();
 
 // CORS options
 const corsOptions = {
-  origin: "https://chatbot-career.onrender.com",  // Specify allowed origin
+  origin: "http://localhost:5173",  // Specify allowed origin
   methods: "GET,POST,PUT,DELETE",                // Allowed HTTP methods
   allowedHeaders: "Content-Type,Authorization",   // Allowed headers
 };
