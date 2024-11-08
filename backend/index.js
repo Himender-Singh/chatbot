@@ -13,7 +13,7 @@ app.use(express.json());
 
 // CORS configuration to allow both domains
 const corsOptions = {
-  origin: ['https://chatbot-1-g91n.onrender.com', 'https://chatbot-cu5a.onrender.com'], // Add the allowed origins
+  origin: 'http://localhost:5173', // Add the allowed origins
   credentials: true
 };
 app.use(cors(corsOptions));
