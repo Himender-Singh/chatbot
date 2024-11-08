@@ -13,14 +13,7 @@ const app = express();
 
 // using middleware
 app.use(express.json());
-
-// CORS configuration to allow both domains
-const corsOptions = {
-  origin: 'http://localhost:5173', // Add the allowed origins
-  credentials: true
-};
-app.use(cors(corsOptions));
-
+app.use(cors());
 const __dirname = path.resolve();
 
 // using routes
