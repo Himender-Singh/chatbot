@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 import connectDb from "./database/db.js";
 import cors from "cors";
 import path from "path";
+// importing routes
+import userRoutes from "./routes/userRoutes.js";
+import chatRoutes from "./routes/chatRoutes.js";
 
 dotenv.config();
 
@@ -19,10 +22,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 const __dirname = path.resolve();
-
-// importing routes
-import userRoutes from "./routes/userRoutes.js";
-import chatRoutes from "./routes/chatRoutes.js";
 
 // using routes
 app.use("/api/user", userRoutes);
